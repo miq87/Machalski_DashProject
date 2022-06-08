@@ -9,7 +9,7 @@ def get_layout():
             ]),
             html.Div([
                 html.H1(children='NETFLIX - Filmy / seriale'),
-                html.H3(children='Analiza zawartości platformy streamingowej z filmami oraz serialami'),
+                html.H3(children='Analiza zawartości platformy strumieniowej z filmami oraz serialami'),
                 html.H6(
                     children='Interaktywna aplikacja webowa stworzona we frameworku Dash, napisana w języku Python.'),
             ], className='m-2')
