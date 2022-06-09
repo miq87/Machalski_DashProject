@@ -1,8 +1,10 @@
 import plotly.express as px
 
 from age_ratings import get_age_ratings
-from myutils import colors, get_genres, group_by_country, \
-    get_countries_genres, get_map_countries, get_by_rangedate
+from myutils import (get_genres, group_by_country, get_countries_genres,
+                     get_map_countries, get_by_rangedate)
+
+colors = ['#0b090a', '#660708', '#a4161a', '#ba181b', '#e5383b', '#b1a7a6']  # paleta kolorów Netflix
 
 
 def get_fig_movies_shows(df, rangedate):
@@ -19,7 +21,7 @@ def get_fig_movies_shows(df, rangedate):
 def get_fig_countries(df):
     df = group_by_country(df).head(8)
     fig = px.pie(df, values='counts', names='country', width=600, height=600)
-    return get_colored_pie(fig)
+    return get_colored_pie(fig, 'inside')
 
 
 def get_fig_countries_bar(df):
@@ -32,7 +34,7 @@ def get_fig_countries_bar(df):
 def get_fig_genres(df, rangedate):
     df = get_genres(df, rangedate).head(8)
     fig = px.pie(df, names='listed_in', values='counts', width=600, height=600)
-    return get_colored_pie(fig)
+    return get_colored_pie(fig, 'inside')
 
 
 def get_fig_countries_genres(df):
@@ -51,11 +53,11 @@ def get_fig_map(df):
 def get_fig_age_ratings(df):
     df = get_age_ratings(df)
     fig = px.pie(df, names='age_group', values='counts', width=600, height=600)
-    return get_colored_pie(fig)
+    return get_colored_pie(fig, 'outside')
 
 
-def get_colored_pie(fig):
-    fig.update_traces(textposition='outside', textinfo='percent + label', hole=0.1,
+def get_colored_pie(fig, place):
+    fig.update_traces(textposition=place, textinfo='percent + label', hole=0.1,
                       marker=dict(colors=colors, line=dict(color='white', width=2)))
     fig.update_layout(font_size=16, showlegend=False)
     return fig
