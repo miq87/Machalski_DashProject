@@ -16,7 +16,8 @@ def get_tabs(tab, df):
             ], className='m-3'),
             html.Div([
                 html.Div([
-                    dcc.Graph(id='fig_movies_shows', figure=fig_movies_shows)
+                    dcc.Loading(children=html.Div([dcc.Graph(id='fig_movies_shows', figure=fig_movies_shows)]),
+                                id='loading_movies_shows', type='dot', color='#b20710')
                 ]),
                 html.Div([
                     get_rangeslider(year_added, True)
@@ -37,10 +38,12 @@ def get_tabs(tab, df):
             ]),
             dbc.Row([
                 dbc.Col([
-                    dcc.Graph(id='fig_countries', figure=fig_countries)
+                    dcc.Loading(children=html.Div([dcc.Graph(id='fig_countries', figure=fig_countries)]),
+                                id='loading_countries', type='dot', color='#b20710')
                 ], sm=12, md=12, lg=4),
                 dbc.Col([
-                    dcc.Graph(id='fig_countries_2', figure=fig_countries_bar)
+                    dcc.Loading(children=html.Div([dcc.Graph(id='fig_countries_2', figure=fig_countries_bar)]),
+                                id='loading_countries_2', type='dot', color='#b20710')
                 ], sm=12, md=12, lg=8)
             ])
         ], fluid=True)
@@ -52,7 +55,8 @@ def get_tabs(tab, df):
                 html.H3('MAPA')
             ], className='m-3'),
             html.Div([
-                dcc.Graph(id='fig_map', figure=fig_map)
+                dcc.Loading(children=html.Div([dcc.Graph(id='fig_map', figure=fig_map)]),
+                            id='loading_map', type='dot', color='#b20710')
             ], className='col-md-8')
         ], className='d-flex justify-content-center align-items-center flex-column')
 
@@ -69,11 +73,15 @@ def get_tabs(tab, df):
             ]),
             dbc.Row([
                 dbc.Col([
-                    html.Div(dcc.Graph(id='fig_genres', figure=fig_genres)),
+                    html.Div(
+                        dcc.Loading(children=html.Div([dcc.Graph(id='fig_genres', figure=fig_genres)]),
+                                    id='loading_genres', type='dot', color='#b20710')
+                        ),
                     get_rangeslider(year_added, False)
                 ], sm=12, md=12, lg=4),
                 dbc.Col([
-                    dcc.Graph(id='fig_countries_genres', figure=fig_countries_genres)
+                    dcc.Loading(children=html.Div([dcc.Graph(id='fig_countries_genres', figure=fig_countries_genres)]),
+                                id='loading_countries_genres', type='dot', color='#b20710')
                 ], sm=12, md=12, lg=8)
             ])
         ], fluid=True)
@@ -85,7 +93,8 @@ def get_tabs(tab, df):
                 html.H3('Kategorie wiekowe w filmach / serialach')
             ], className='m-3'),
             html.Div([
-                dcc.Graph(id='fig_age_ratings', figure=fig_age_ratings)
+                dcc.Loading(children=html.Div([dcc.Graph(id='fig_age_ratings', figure=fig_age_ratings)]),
+                            id='loading_age_ratings', type='dot', color='#b20710')
             ])
         ], className='d-flex justify-content-center flex-column align-items-center')
 
