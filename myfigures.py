@@ -7,6 +7,9 @@ from myutils import (get_genres, group_by_country, get_countries_genres,
 colors = ['#0b090a', '#660708', '#a4161a', '#ba181b', '#e5383b', '#b1a7a6']  # paleta kolorów Netflix
 
 
+# Funkcja zwracająca obiekt wykresu "Filmy - Seriale"
+# Ustawia rozmiar oraz jego wygląda
+# (kolory, ramki, umiejscowienie tekstu, rozmiar czcionki)
 def get_fig_movies_shows(df, rangedate):
     df = get_by_rangedate(df, rangedate)
     fig = px.pie(df['type'].value_counts().reset_index(),
